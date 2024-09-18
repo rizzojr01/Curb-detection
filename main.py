@@ -14,14 +14,14 @@ import wave
 import tempfile
 import os
 import glob
+import math
 import multiprocessing
 from scipy.optimize import minimize
 from scipy.io.wavfile import read, write
 from scipy.io import wavfile
 # start webcam#
 video_source = 0
-#video_source = "curb_video1.mp4"
-orientation_mimic = False
+orientation_mimic = False #True for text speech method
 
 def generate_camera_output_filename(base_dir=".", prefix="camera", extension=".mp4"):
     # Find all existing files that match the pattern
@@ -316,7 +316,7 @@ class TextToSpeech(threading.Thread):#mimic3
         #with self.phrases.mutex:
         self.phrases.queue.clear()
 
-import math
+
 
 class FanZoneDetector: #decide which area the object locates in
     def __init__(self, center, red_axes, yellow_axes, green_axes, start_angle, end_angle, mid_left_angle, mid_right_angle, device):
